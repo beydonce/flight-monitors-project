@@ -8,6 +8,7 @@ export interface FlightData {
   his: number;
   adi: number;
 }
+// default variable for showing templates of visual and text
 const defaultFlight: FlightData = {
   altitude: 0,
   his: 0,
@@ -18,6 +19,7 @@ type DisplayMode = "text" | "visual" | "add";
 
 function App() {
   
+  // options for current button, by default "add"
   const [mode, setMode] = useState<DisplayMode>("add");
   const [lastFlight, setLastFlight] = useState<FlightData | null>(null);
 
@@ -30,6 +32,7 @@ function App() {
       </div>
 
       {/* Render component based on mode */}
+      {/* *note: when launching the web or refreshing, it will show the templates of visual and text [defaultFlight] */}
       {mode === "add" && <Inputs setLastFlight={setLastFlight} />}
       {mode === "text" && <Text data={lastFlight || defaultFlight} />}
       {mode === "visual" && <Visual data={lastFlight || defaultFlight} />}

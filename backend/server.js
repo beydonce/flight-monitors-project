@@ -6,7 +6,7 @@ require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 5001;
 
-// connecting between front and back
+// enabling request between front to back
 app.use(cors());
 app.use(express.json());
 
