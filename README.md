@@ -91,8 +91,6 @@ http://localhost:3000
 - Visualize flight indicators (altitude bar, heading, ADI color)
 - Toggle between input, text, and visual modes
 
----
-
 
 
 ---
@@ -102,5 +100,4 @@ http://localhost:3000
 - **Frontend**: React + TypeScript
 - **Backend**: Node.js + Express
 - **Database**: MongoDB (with Mongoose)
-- **UI**: Plain HTML/CSS (can be extended with Tailwind/Styled Components)
 
