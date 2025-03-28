@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+// flight struct and creates schema in mongoDB
 const flightDataSchema = new mongoose.Schema({
   altitude: { type: Number, required: true, min: 0, max: 3000 },
   his: { type: Number, required: true, min: 0, max: 360 },

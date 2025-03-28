@@ -12,8 +12,6 @@ const Inputs: React.FC<Props> = ({ setLastFlight }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Submitting:", { altitude, his, adi });
-
     try {
       const res = await fetch("http://localhost:5001/api/flight", {
         method: "POST",
@@ -23,56 +21,106 @@ const Inputs: React.FC<Props> = ({ setLastFlight }) => {
 
       if (!res.ok) {
         const errorText = await res.text();
-        console.error("Server responded with error:", errorText);
         alert("Error: " + errorText);
         return;
       }
 
       const saved = await res.json();
-      console.log("Saved to DB:", saved);
       setLastFlight(saved);
     } catch (err) {
-      console.error("Error sending request:", err);
       alert("Failed to send data to server.");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Altitude:
-        <input
-          type="number"
-          value={altitude}
-          onChange={(e) => setAltitude(+e.target.value)}
-          required
-        />
-      </label>
-      <br />
+    <form
+      onSubmit={handleSubmit}
+      style={{
+        backgroundColor: "white",
+        borderRadius: "20px",
+        padding: "2rem",
+        paddingBottom: "4.5rem", 
+        maxWidth: "500px",
+        margin: "2rem auto",
+        boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+        position: "relative",
+        display: "flex",
+        flexDirection: "column",
+        gap: "1.5rem",
+      }}
+      
+    >
+      {/* Input rows */}
+      <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+        {/* Altitude */}
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <label style={{ minWidth: 100 }}>Altitude:</label>
+          <input
+            type="number"
+            value={altitude}
+            onChange={(e) => setAltitude(+e.target.value)}
+            required
+            style={{
+              padding: "0.6rem 1rem",
+              borderRadius: "5px",
+              border: "1px solid #ccc",
+              width: "60%",
+            }}
+          />
+        </div>
 
-      <label>
-        HIS:
-        <input
-          type="number"
-          value={his}
-          onChange={(e) => setHis(+e.target.value)}
-          required
-        />
-      </label>
-      <br />
+        {/* HIS */}
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <label style={{ minWidth: 100 }}>HIS:</label>
+          <input
+            type="number"
+            value={his}
+            onChange={(e) => setHis(+e.target.value)}
+            required
+            style={{
+              padding: "0.6rem 1rem",
+              borderRadius: "5px",
+              border: "1px solid #ccc",
+              width: "60%",
+            }}
+          />
+        </div>
 
-      <label>
-        ADI:
-        <input
-          type="number"
-          value={adi}
-          onChange={(e) => setAdi(+e.target.value)}
-          required
-        />
-      </label>
-      <br />
+        {/* ADI */}
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <label style={{ minWidth: 100 }}>ADI:</label>
+          <input
+            type="number"
+            value={adi}
+            onChange={(e) => setAdi(+e.target.value)}
+            required
+            style={{
+              padding: "0.6rem 1rem",
+              borderRadius: "5px",
+              border: "1px solid #ccc",
+              width: "60%",
+            }}
+          />
+        </div>
+      </div>
 
-      <button type="submit">SEND</button>
+      {/* SEND button with arrow style */}
+      <button
+        type="submit"
+        style={{
+          position: "absolute",
+          bottom: "1rem",
+          right: "1rem",
+          padding: "0.6rem 1.5rem",
+          backgroundColor: "brown",
+          color: "white",
+          border: "none",
+          borderRadius: "0 10px 10px 0",
+          cursor: "pointer",
+        }}
+      >
+        SEND
+      </button>
     </form>
   );
 };

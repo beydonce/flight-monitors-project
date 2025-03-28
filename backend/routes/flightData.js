@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const FlightData = require("../models/FlightInputFormat");
 
+// adding new flight to mongoDB and checking if valid
 router.post("/", async (req, res) => {
   try {
     const { altitude, his, adi } = req.body;

@@ -17,7 +17,13 @@ const Visual: React.FC<{ data: FlightData }> = ({ data }) => {
   }
 
   return (
-    <div style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
+    <div style={{
+      display: "flex",
+      justifyContent: "center",
+      marginTop: "3rem",
+      gap: "4rem",
+      alignItems: "center"
+    }}>
       
       {/* altitude */}
       <div style={{ height: 300, width: 40, backgroundColor: "#ccc", position: "relative" }}>

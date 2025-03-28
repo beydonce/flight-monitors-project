@@ -9,6 +9,7 @@ A full-stack web app to input and visualize flight data in real-time using **Rea
 ```
 flight-monitor-project/
 ├── backend/        # Node.js + Express + MongoDB
+│   └── .env.example ✅
 ├── frontend/       # React + TypeScript client
 └── README.md
 ```
@@ -43,7 +44,13 @@ cd backend
 npm install
 ```
 
-#### Create a `.env` file in `backend/` with this content:
+#### ✅ Copy `.env.example` and rename it to `.env`:
+
+```bash
+cp .env.example .env
+```
+
+Your `.env` file should contain:
 
 ```
 MONGO_URI=mongodb://localhost:27017/flightApp
@@ -58,7 +65,8 @@ node server.js
 # npx nodemon server.js
 ```
 
-Should print:
+Expected output:
+
 ```
 Connected to MongoDB
 Server running on http://localhost:5001
@@ -77,21 +85,35 @@ npm start
 ```
 
 The frontend will start on:  
-```
-http://localhost:3000
-```
+[http://localhost:3000](http://localhost:3000)
+
+---
+
+## 🧪 Usage
+
+1. Make sure both frontend and backend are running
+2. Open your browser at [http://localhost:3000](http://localhost:3000)
+3. Click the ➕ `+` button to enter flight data
+4. Then click `TEXT` or `VISUAL` to view the data display
 
 ---
 
 ## ✍️ Features
 
 - Input Altitude, HIS, and ADI values
-- Save to MongoDB
+- Save data to MongoDB via Express API
 - View latest entry as text
-- Visualize flight indicators (altitude bar, heading, ADI color)
-- Toggle between input, text, and visual modes
+- Visualize flight indicators (altitude bar, heading compass, ADI)
+- Toggle between input form, text display, and visual panel
 
+---
 
+## ❓ Troubleshooting
+
+- Make sure MongoDB is running locally on port `27017`
+- If you get `MongoDB error: connection refused`, double-check your `.env`
+- If the frontend shows a CORS error, make sure the backend is running on port `5001`
+- If `npm start` or `npm install` fails, make sure you're in the correct folder (`frontend` or `backend`)
 
 ---
 
@@ -99,5 +121,10 @@ http://localhost:3000
 
 - **Frontend**: React + TypeScript
 - **Backend**: Node.js + Express
-- **Database**: MongoDB (with Mongoose)
+- **Database**: MongoDB (via Mongoose)
 
+---
+
+## 🙌 Author
+
+Built by [@beydonce](https://github.com/beydonce) — for IAF
