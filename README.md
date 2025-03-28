@@ -93,15 +93,7 @@ http://localhost:3000
 
 ---
 
-## 🧪 Testing the API (Optional)
 
-You can test the backend directly:
-
-```bash
-curl -X POST http://localhost:5001/api/flight \
-  -H "Content-Type: application/json" \
-  -d '{"altitude": 1200, "his": 180, "adi": 50}'
-```
 
 ---
 
@@ -111,14 +103,4 @@ curl -X POST http://localhost:5001/api/flight \
 - **Backend**: Node.js + Express
 - **Database**: MongoDB (with Mongoose)
 - **UI**: Plain HTML/CSS (can be extended with Tailwind/Styled Components)
-
----
-
-## 🤝 Contributing
-
-Pull requests and issues are welcome!
-
----
-
-> Built with ❤️ for learning, aviation, and awesome UIs.
 
