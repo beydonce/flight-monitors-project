@@ -14,9 +14,10 @@ router.post("/", async (req, res) => {
   }
 });
 
+// project extended 
 router.get("/", async (req, res) => {
   try {
-    const recent = await FlightData.find().sort({ createdAt: -1 }).limit(10);
+    const recent = await FlightData.findOne().sort({ createdAt: -1 });
     res.json(recent);
   } catch (error) {
     res.status(500).json({ message: "Failed to fetch data" });

@@ -30,7 +30,7 @@ Make sure you have these installed:
 ### 📆 1. Clone the Project
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/beydonce/flight-monitors-project.git
 cd flight-monitor-project
 ```
 
