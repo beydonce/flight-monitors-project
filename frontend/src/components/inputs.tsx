@@ -13,6 +13,20 @@ const Inputs: React.FC<Props> = ({ setLastFlight }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (altitude < 0 || altitude > 3000) {
+      alert("Altitude must be between 0 and 3000");
+      return;
+    }
+    if (his < 0 || his > 360) {
+      alert("HIS must be between 0 and 360");
+      return;
+    }
+    if (adi < -100 || adi > 100) {
+      alert("ADI must be between -100 and 100");
+      return;
+    }
+    
+
     // sending the flight data to express backend using rest api
     try {
       const res = await fetch("http://localhost:5001/api/flight", {
@@ -31,6 +45,7 @@ const Inputs: React.FC<Props> = ({ setLastFlight }) => {
       // else, store the data in a variable
       const saved = await res.json();
       setLastFlight(saved);
+      alert("Flight data saved successfully!");
     } catch (err) {
       alert("Failed to send data to server.");
     }
