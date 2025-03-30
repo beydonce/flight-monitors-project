@@ -4,7 +4,7 @@ import { FlightData } from "../App";
 interface Props {
   setLastFlight: (data: FlightData) => void;
 }
-
+// React.FC	Stands for React Functional Component — a special type from React
 const Inputs: React.FC<Props> = ({ setLastFlight }) => {
   const [altitude, setAltitude] = useState(0);
   const [his, setHis] = useState(0);
@@ -60,8 +60,10 @@ const Inputs: React.FC<Props> = ({ setLastFlight }) => {
         padding: "2rem",
         paddingBottom: "4.5rem", 
         maxWidth: "500px",
-        margin: "2rem auto",
+        // Centered on screen
+        margin: "2rem auto", 
         boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+        // the SEND button can be absolutely placed at the bottom right
         position: "relative",
         display: "flex",
         flexDirection: "column",
@@ -70,13 +72,16 @@ const Inputs: React.FC<Props> = ({ setLastFlight }) => {
       
     >
       {/* Input rows */}
+      {/* Contains all three input rows (Altitude, HIS, ADI)
+      flexDirection: "column" → stacks them vertically */}
       <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
         {/* Altitude */}
+        {/* justifyContent: "space-between" → pushes label left and input right */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <label style={{ minWidth: 100 }}>Altitude:</label>
           <input
             type="number"
-            value={altitude}
+            // value={altitude}
             onChange={(e) => setAltitude(+e.target.value)}
             required
             style={{
@@ -93,7 +98,7 @@ const Inputs: React.FC<Props> = ({ setLastFlight }) => {
           <label style={{ minWidth: 100 }}>HIS:</label>
           <input
             type="number"
-            value={his}
+            // value={his}
             onChange={(e) => setHis(+e.target.value)}
             required
             style={{
@@ -110,7 +115,7 @@ const Inputs: React.FC<Props> = ({ setLastFlight }) => {
           <label style={{ minWidth: 100 }}>ADI:</label>
           <input
             type="number"
-            value={adi}
+            // value={adi}
             onChange={(e) => setAdi(+e.target.value)}
             required
             style={{

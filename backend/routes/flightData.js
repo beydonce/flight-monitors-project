@@ -16,13 +16,15 @@ router.post("/", async (req, res) => {
 });
 
 // project extended 
-router.get("/", async (req, res) => {
+// GET all flight data
+router.get("/all", async (req, res) => {
   try {
-    const recent = await FlightData.findOne().sort({ createdAt: -1 });
-    res.json(recent);
+    const allFlights = await FlightData.find().sort({ createdAt: -1 });
+    res.json(allFlights);
   } catch (error) {
-    res.status(500).json({ message: "Failed to fetch data" });
+    res.status(500).json({ message: "Failed to fetch flight data", error: error.message });
   }
 });
+
 
 module.exports = router;

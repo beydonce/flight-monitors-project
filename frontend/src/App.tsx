@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Inputs from "./components/inputs";
 import Text from "./components/text";
 import Visual from "./components/visual";
+import AllSavedFlights from "./components/allSavedFlights";
+
 
 export interface FlightData {
   altitude: number;
@@ -15,7 +17,7 @@ const defaultFlight: FlightData = {
   adi: 0,
 };
 
-type DisplayMode = "text" | "visual" | "add";
+type DisplayMode = "text" | "visual" | "add" | "all";
 
 function App() {
   
@@ -29,6 +31,7 @@ function App() {
         <button onClick={() => setMode("text")}>TEXT</button>
         <button onClick={() => setMode("visual")}>VISUAL</button>
         <button onClick={() => setMode("add")}>+</button>
+        <button onClick={() => setMode("all")}>📋 All Flights</button>
       </div>
 
       {/* Render component based on mode */}
@@ -36,6 +39,8 @@ function App() {
       {mode === "add" && <Inputs setLastFlight={setLastFlight} />}
       {mode === "text" && <Text data={lastFlight || defaultFlight} />}
       {mode === "visual" && <Visual data={lastFlight || defaultFlight} />}
+      {mode === "all" && <AllSavedFlights />}
+
 
     </div>
   );
