@@ -1,0 +1,33 @@
+name: Full Stack CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Clone repository
+        uses: actions/checkout@v3
+
+      - name: ⚙️ Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: 📦 Install backend
+        working-directory: backend
+        run: npm install
+
+      - name: 📦 Install frontend
+        working-directory: frontend
+        run: npm install
+
+      - name: 🛠️ Build frontend
+        working-directory: frontend
+        run: npm run build
+
+      - name: ✅ CI completed
+        run: echo "Everything is working ✅"
