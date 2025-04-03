@@ -1,6 +1,6 @@
 # ✈️ Flight Monitor Project
 
-A full-stack web app to input and visualize flight data in real-time using **React**, **Node.js**, **Express**, and **MongoDB**.
+A full-stack web app to input and visualize flight data in real-time using **React**, **Node.js**, **Express**, and **MongoDB** — with optional **Docker** support for easy setup.
 
 ---
 
@@ -11,6 +11,7 @@ flight-monitor-project/
 ├── backend/        # Node.js + Express + MongoDB
 │   └── .env.example ✅
 ├── frontend/       # React + TypeScript client
+├── docker-compose.yml ✅
 └── README.md
 ```
 
@@ -24,14 +25,45 @@ Make sure you have these installed:
 
 - [Node.js](https://nodejs.org/en/) (v18+ recommended)
 - [npm](https://www.npmjs.com/)
-- [MongoDB](https://www.mongodb.com/) (local or [Atlas](https://www.mongodb.com/atlas))
+- [Docker](https://www.docker.com/) (for containerized setup)
+- [MongoDB](https://www.mongodb.com/) (only for non-Docker local setup)
+
+---
+
+## 📦 Option 1: Run with Docker (Recommended)
+
+This method runs **frontend**, **backend**, and **MongoDB** in containers automatically.
+
+### 🧱 1. Build and Run All Services
+
+```bash
+docker compose up --build
+```
+
+This will:
+- Build the frontend and backend Docker images
+- Start MongoDB in a container
+- Connect all services
+- Serve frontend at: http://localhost:3000
+- Serve backend API at: http://localhost:5001/api/flight
+
+### 🛑 2. Stop the App
+
+```bash
+Ctrl + C
+docker compose down
+```
+
+---
+
+## 💻 Option 2: Manual Setup (Without Docker)
 
 ---
 
 ### 📆 1. Clone the Project
 
 ```bash
-git clone https://github.com/beydonce/flight-monitors-project.git
+git clone https://github.com/beydonce/flight-monitor-project.git
 cd flight-monitor-project
 ```
 
@@ -85,14 +117,14 @@ npm start
 ```
 
 The frontend will start on:  
-[http://localhost:3000](http://localhost:3000)
+http://localhost:3000
 
 ---
 
 ## 🧪 Usage
 
 1. Make sure both frontend and backend are running
-2. Open your browser at [http://localhost:3000](http://localhost:3000)
+2. Open your browser at http://localhost:3000
 3. Click the ➕ `+` button to enter flight data
 4. Then click `TEXT` or `VISUAL` to view the data display
 
@@ -110,21 +142,25 @@ The frontend will start on:
 
 ## ❓ Troubleshooting
 
-- Make sure MongoDB is running locally on port `27017`
-- If you get `MongoDB error: connection refused`, double-check your `.env`
-- If the frontend shows a CORS error, make sure the backend is running on port `5001`
+- If using Docker, make sure ports 3000, 5001, and 27017 are free
+- If using local MongoDB, ensure it's running on port 27017
+- If you get "MongoDB error: connection refused", double-check your `.env`
+- If the frontend shows a CORS error, make sure the backend is running on port 5001
 - If `npm start` or `npm install` fails, make sure you're in the correct folder (`frontend` or `backend`)
 
 ---
 
 ## 💠 Tech Stack
 
-- **Frontend**: React + TypeScript
+- **Frontend**: React + TypeScript + Nginx (Docker)
 - **Backend**: Node.js + Express
-- **Database**: MongoDB (via Mongoose)
+- **Database**: MongoDB (local or Docker)
+- **DevOps**: Docker + Docker Compose
+- **CI/CD**: GitHub Actions (optional)
 
 ---
 
 ## 🙌 Author
 
-Built by [@beydonce](https://github.com/beydonce) — for IAF
+Built by [@beydonce](https://github.com/beydonce) — for IAF ✈️  
+Full-stack meets DevOps 🤝
