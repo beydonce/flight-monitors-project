@@ -45,7 +45,7 @@ This will:
 - Start MongoDB in a container
 - Connect all services
 - Serve frontend at: http://localhost:3000
-- Serve backend API at: http://localhost:5001/api/flight
+- Serve backend API at: http://localhost:5001/api/flight/all
 
 ### 🛑 2. Stop the App
 
@@ -156,7 +156,7 @@ http://localhost:3000
 - **Backend**: Node.js + Express
 - **Database**: MongoDB (local or Docker)
 - **DevOps**: Docker + Docker Compose
-- **CI/CD**: GitHub Actions (optional)
+- **CI/CD**: GitHub Actions
 
 ---
 
